@@ -19,3 +19,4 @@ print("Element",x,"is found at index",binarysearch(arr,x))
 
 #index -1 means element not found.
 #time complexity of binary search is O(log(n))
+#Binary Search is an incredible algorithm to use on large, sorted arrays, or whenever we plan to search for elements repeatedly in a single array.
