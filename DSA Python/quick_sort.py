@@ -4,28 +4,30 @@ def swap(a,b,arr):
         arr[a] = arr[b]
         arr[b] = tmp
 
-def partition(elements, start, end):
-    pivot = elements[start]
-    i = start 
-    j = end
-
-    while i<j:
-        while elements[i] < pivot:
+def partition(arr, low, high):
+    pivot = arr[low]
+    i = low - 1
+    j = high + 1
+    
+    while True:
+        i+=1
+        while arr[i]<pivot:
             i += 1
         
-        while elements[j] > pivot:
+        j-=1
+        while arr[j]>pivot:
             j -= 1
         
-        if i >= j:
-            return j #when i and j cross each other
+        if i>=j: #when two pointers meet or cross each other
+            return j
         
-        swap(i,j,elements) #can also use elements[i], elements[j] = elements[j], elements[i]
+        swap(i,j,arr) #can also write arr[i], arr[j] = arr[j], arr[i]
     
-def quick_sort(elements, start, end):
-    if start<end:
-        pi = partition(elements, start, end)
-        quick_sort(elements, start, pi - 1) #left-partition
-        quick_sort(elements, pi + 1, end) #right-partition
+def quick_sort(arr, low, high):
+    if low < high:
+        pi = partition(arr, low, high) #pi is the partitioning index
+        quick_sort(arr, low, pi) #left-partition
+        quick_sort(arr, pi+1, high) #right-partition
     
 if __name__ == '__main__':
     elements = [11,9,29,8,3,15,28]
